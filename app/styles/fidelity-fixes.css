@@ -1,10 +1,13 @@
-/* Correções de fidelidade visual, WhatsApp, galeria real e passos. */
+/* Ajustes finais da Landing Page VendeLeve.
+   Este arquivo deve ser importado por último em app/globals.css. */
 
-/* WhatsApp: ícone preenchido estável e botões sem corte. */
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
 .button.whatsapp,
 .icon-button.whatsapp-icon,
-.launch-whatsapp,
-.floating-whatsapp {
+.launch-whatsapp {
   color: #0b8f45;
 }
 
@@ -40,44 +43,60 @@
   min-width: 0;
   overflow: hidden;
   white-space: nowrap;
+  color: #ffffff;
+}
+
+.floating-whatsapp svg {
+  color: #ffffff;
 }
 
 .floating-whatsapp-label {
   min-width: 0;
   overflow: hidden;
+  color: #ffffff;
   text-overflow: ellipsis;
 }
 
-/* Galeria: imagens reais do sistema, legíveis e sem mini telas inventadas. */
+/* =========================================================
+   TELAS REAIS DO SISTEMA
+   ========================================================= */
+
 .real-screens-grid {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: start;
   gap: 28px;
 }
 
 .real-screen-card {
+  min-width: 0;
   padding: 12px 12px 24px;
   overflow: hidden;
-}
-
-.real-screen-card.featured {
-  grid-column: 1 / -1;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: var(--shadow-sm);
 }
 
 .real-screen-window {
+  overflow: hidden;
+  border: 1px solid #ead8cd;
+  border-radius: 18px;
   background: #fffaf6;
 }
 
-.real-screen-media {
-  position: relative;
+.real-screen-frame {
   width: 100%;
-  aspect-ratio: 16 / 8.7;
   overflow: hidden;
-  background: linear-gradient(135deg, #fffdfa, #fff6f1);
+  background: #fffdfb;
 }
 
-.real-screen-media img {
-  object-fit: cover;
+.real-screen-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
   object-position: top left;
 }
 
@@ -94,13 +113,16 @@
   font-size: .92rem;
 }
 
-/* Números dos passos: sem caracteres decorativos quebrados. */
+/* =========================================================
+   COMEÇAR É SIMPLES
+   ========================================================= */
+
 .corrected-steps-grid {
   align-items: stretch;
 }
 
 .corrected-step-card {
-  min-height: 270px;
+  min-height: 260px;
   display: flex;
   flex-direction: column;
   padding: 28px;
@@ -111,7 +133,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 34px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   padding: 0 13px;
   border: 1px solid #ecc8b5;
   border-radius: 999px;
@@ -149,18 +171,122 @@
   height: 20px;
 }
 
-/* Evita que regras antigas posicionem o novo ícone como decoração absoluta. */
 .corrected-step-card > svg {
   display: none;
 }
 
+/* =========================================================
+   CONDIÇÃO ESPECIAL DE LANÇAMENTO
+   ========================================================= */
+
+.pricing-single-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+}
+
+.launch-plan-card {
+  border-color: #d98a63;
+  box-shadow: 0 28px 70px rgba(214, 107, 55, .14);
+  transform: none;
+}
+
+.launch-plan-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-from {
+  margin-top: 14px;
+  color: #9f7b6c;
+  font-size: .94rem;
+  font-weight: 700;
+  text-decoration: line-through;
+}
+
+.launch-plan-header > strong {
+  margin-top: 10px;
+  color: var(--brand-dark);
+}
+
+.implementation-box {
+  margin: 8px 0 24px;
+  padding: 18px 20px;
+  border: 1px solid #eed7ca;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff9f5 0%, #fffdfb 100%);
+}
+
+.implementation-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--brand-dark);
+  font-size: .8rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.implementation-prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.implementation-prices s {
+  color: #9f7b6c;
+  font-weight: 700;
+}
+
+.implementation-prices strong {
+  color: var(--brand-dark);
+  font-size: 1.35rem;
+}
+
+.implementation-box p {
+  margin: 0;
+  font-size: .94rem;
+}
+
+.pricing-mini-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pricing-mini-notes span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--brand-pale);
+  color: #714b3a;
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.pricing-mini-notes svg {
+  width: 17px;
+  height: 17px;
+  color: var(--brand);
+}
+
+.launch-note {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
 @media (max-width: 980px) {
   .real-screens-grid {
     grid-template-columns: 1fr;
-  }
-
-  .real-screen-card.featured {
-    grid-column: auto;
   }
 }
 
@@ -174,10 +300,6 @@
     border-radius: 20px;
   }
 
-  .real-screen-media {
-    aspect-ratio: 1.55 / 1;
-  }
-
   .real-screen-copy {
     padding: 0 7px;
   }
@@ -189,6 +311,14 @@
   .corrected-step-card {
     min-height: 220px;
     padding: 24px;
+  }
+
+  .pricing-single-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .launch-note {
+    text-align: left;
   }
 
   .floating-whatsapp {
@@ -212,9 +342,5 @@
   .button.whatsapp {
     white-space: normal;
     text-align: center;
-  }
-
-  .real-screen-media {
-    aspect-ratio: 1.45 / 1;
   }
 }
