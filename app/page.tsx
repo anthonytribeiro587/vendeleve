@@ -22,13 +22,16 @@ const softwareSchema = {
   operatingSystem: "Web",
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  offers: {
-    "@type": "Offer",
-    name: "Plano Lançamento",
-    price: "100",
-    priceCurrency: "BRL",
-    description: "Condição de lançamento para os primeiros 20 clientes. Implantação inicial a partir de R$ 500.",
-  },
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Plano VendeLeve - lançamento",
+      price: "100",
+      priceCurrency: "BRL",
+      description:
+        "Condição especial de lançamento para os primeiros 20 clientes: R$ 100 por mês e implantação promocional de R$ 500.",
+    },
+  ],
 };
 
 export default function HomePage() {

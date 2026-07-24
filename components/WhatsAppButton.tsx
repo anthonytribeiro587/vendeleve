@@ -4,7 +4,7 @@ import { Icon } from "./Icon";
 export function WhatsAppButton() {
   return (
     <a
-      className="floating-whatsapp whatsapp-link"
+      className="floating-whatsapp"
       href={createWhatsAppUrl()}
       target="_blank"
       rel="noopener noreferrer"
