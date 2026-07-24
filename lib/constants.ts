@@ -15,6 +15,6 @@ export const NAV_ITEMS = [
   { label: "Recursos", href: "#recursos" },
   { label: "Telas", href: "#telas" },
   { label: "Para quem é", href: "#publico" },
-  { label: "Planos", href: "#planos" },
+  { label: "Condição", href: "#planos" },
   { label: "Dúvidas", href: "#duvidas" },
 ] as const;
