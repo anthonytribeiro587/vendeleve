@@ -5,7 +5,7 @@ const questions = [
   ["Posso controlar vendas parceladas?", "Sim. É possível registrar o número de parcelas, definir vencimentos e acompanhar o status de cada cobrança."],
   ["O sistema envia mensagens automaticamente?", "Não. O VendeLeve facilita o acesso ao WhatsApp e o compartilhamento de informações, mas não promete automações que ainda não estejam implementadas."],
   ["Meus dados ficam misturados com os de outras lojas?", "Não. Cada empresa possui seu próprio acesso e os dados são separados conforme a estrutura contratada."],
-  ["Existe suporte?", "Sim. Os planos incluem suporte para utilização e correções do sistema, conforme as condições da contratação."],
+  ["Existe suporte?", "Sim. A mensalidade inclui suporte para utilização e correções do sistema, conforme as condições da contratação."],
   ["Posso solicitar novas funções?", "Sugestões podem ser avaliadas. Novos módulos, integrações e alterações estruturais podem ser orçados separadamente."],
 ];
 
