@@ -22,10 +22,13 @@ const softwareSchema = {
   operatingSystem: "Web",
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  offers: [
-    { "@type": "Offer", name: "Plano Essencial", price: "129", priceCurrency: "BRL" },
-    { "@type": "Offer", name: "Plano Profissional", price: "179", priceCurrency: "BRL" },
-  ],
+  offers: {
+    "@type": "Offer",
+    name: "Plano Lançamento",
+    price: "100",
+    priceCurrency: "BRL",
+    description: "Condição de lançamento para os primeiros 20 clientes. Implantação inicial a partir de R$ 500.",
+  },
 };
 
 export default function HomePage() {
