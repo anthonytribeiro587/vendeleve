@@ -53,15 +53,11 @@ O número do WhatsApp deve conter DDI + DDD + número, somente dígitos.
 ## Materiais de marca incluídos
 
 - `public/brand/logo-vendeleve.svg`
-- `public/brand/logo-vendeleve.png`
-- `public/brand/logo-vendeleve-horizontal.png`
 - `public/brand/icon-vendeleve.svg`
-- `public/brand/icon-vendeleve.png`
 - `public/brand/favicon.svg`
-- `public/brand/favicon.png`
-- `public/brand/og-vendeleve.png`
-- `public/commercial/post-vendeleve.png`
-- `public/commercial/story-vendeleve.png`
+- `app/opengraph-image.tsx` (imagem social gerada automaticamente)
+- `public/commercial/post-vendeleve.svg`
+- `public/commercial/story-vendeleve.svg`
 
 ## Conteúdo e escopo
 

@@ -1,0 +1,53 @@
+import { Audience } from "@/components/Audience";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { DemoForm } from "@/components/DemoForm";
+import { FAQ } from "@/components/FAQ";
+import { Features } from "@/components/Features";
+import { FinalCTA } from "@/components/FinalCTA";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { HowItWorks } from "@/components/HowItWorks";
+import { Pricing } from "@/components/Pricing";
+import { ProblemSection } from "@/components/ProblemSection";
+import { ScreensGallery } from "@/components/ScreensGallery";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: SITE_NAME,
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  offers: [
+    { "@type": "Offer", name: "Plano Essencial", price: "129", priceCurrency: "BRL" },
+    { "@type": "Offer", name: "Plano Profissional", price: "179", priceCurrency: "BRL" },
+  ],
+};
+
+export default function HomePage() {
+  return (
+    <>
+      <script type="application/ld+json">{JSON.stringify(softwareSchema)}</script>
+      <Header />
+      <main>
+        <Hero />
+        <ProblemSection />
+        <Features />
+        <Audience />
+        <ScreensGallery />
+        <BeforeAfter />
+        <HowItWorks />
+        <Pricing />
+        <DemoForm />
+        <FAQ />
+        <FinalCTA />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </>
+  );
+}
