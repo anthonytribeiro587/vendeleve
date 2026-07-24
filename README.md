@@ -59,6 +59,12 @@ O número do WhatsApp deve conter DDI + DDD + número, somente dígitos.
 - `public/commercial/post-vendeleve.svg`
 - `public/commercial/story-vendeleve.svg`
 
+## Condição comercial de lançamento
+
+- Plano único: **R$ 100 por mês** para os primeiros 20 clientes.
+- Implantação e configuração inicial: **a partir de R$ 500**.
+- A contratação é confirmada pelo WhatsApp após demonstração e alinhamento.
+
 ## Conteúdo e escopo
 
 A Landing Page apresenta apenas funções atualmente previstas no produto:
