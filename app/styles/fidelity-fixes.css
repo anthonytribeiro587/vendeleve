@@ -1,0 +1,220 @@
+/* Correções de fidelidade visual, WhatsApp, galeria real e passos. */
+
+/* WhatsApp: ícone preenchido estável e botões sem corte. */
+.button.whatsapp,
+.icon-button.whatsapp-icon,
+.launch-whatsapp,
+.floating-whatsapp {
+  color: #0b8f45;
+}
+
+.button.whatsapp {
+  min-width: 0;
+  border-color: #a8e1bf;
+  background: #f2fff6;
+  white-space: nowrap;
+}
+
+.button.whatsapp svg,
+.icon-button.whatsapp-icon svg,
+.launch-whatsapp svg,
+.floating-whatsapp svg {
+  width: 21px;
+  height: 21px;
+  min-width: 21px;
+  flex: 0 0 21px;
+}
+
+.icon-button.whatsapp-icon {
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.floating-whatsapp {
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  left: auto;
+  width: auto;
+  max-width: calc(100vw - 36px);
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.floating-whatsapp-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Galeria: imagens reais do sistema, legíveis e sem mini telas inventadas. */
+.real-screens-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 28px;
+}
+
+.real-screen-card {
+  padding: 12px 12px 24px;
+  overflow: hidden;
+}
+
+.real-screen-card.featured {
+  grid-column: 1 / -1;
+}
+
+.real-screen-window {
+  background: #fffaf6;
+}
+
+.real-screen-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8.7;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fffdfa, #fff6f1);
+}
+
+.real-screen-media img {
+  object-fit: cover;
+  object-position: top left;
+}
+
+.real-screen-copy {
+  padding: 0 10px;
+}
+
+.real-screen-copy h3 {
+  margin: 19px 0 7px;
+}
+
+.real-screen-copy p {
+  margin: 0;
+  font-size: .92rem;
+}
+
+/* Números dos passos: sem caracteres decorativos quebrados. */
+.corrected-steps-grid {
+  align-items: stretch;
+}
+
+.corrected-step-card {
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+}
+
+.step-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  margin-bottom: 22px;
+  padding: 0 13px;
+  border: 1px solid #ecc8b5;
+  border-radius: 999px;
+  background: #fff5ef;
+  color: var(--brand-dark);
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.corrected-step-card h3 {
+  margin: 0 0 11px;
+}
+
+.corrected-step-card p {
+  margin: 0;
+}
+
+.step-card-arrow {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-top: auto;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--brand-pale);
+  color: var(--brand);
+}
+
+.step-card-arrow svg {
+  position: static;
+  width: 20px;
+  height: 20px;
+}
+
+/* Evita que regras antigas posicionem o novo ícone como decoração absoluta. */
+.corrected-step-card > svg {
+  display: none;
+}
+
+@media (max-width: 980px) {
+  .real-screens-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .real-screen-card.featured {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .real-screens-grid {
+    gap: 18px;
+  }
+
+  .real-screen-card {
+    padding: 8px 8px 20px;
+    border-radius: 20px;
+  }
+
+  .real-screen-media {
+    aspect-ratio: 1.55 / 1;
+  }
+
+  .real-screen-copy {
+    padding: 0 7px;
+  }
+
+  .corrected-steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .corrected-step-card {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .floating-whatsapp {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    width: 54px;
+    height: 54px;
+    max-width: 54px;
+    min-height: 54px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .floating-whatsapp-label {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .button.whatsapp {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .real-screen-media {
+    aspect-ratio: 1.45 / 1;
+  }
+}
