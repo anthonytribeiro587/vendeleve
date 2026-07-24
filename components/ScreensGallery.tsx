@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Icon } from "./Icon";
 
 type ScreenItem = {
   title: string;
@@ -69,6 +73,26 @@ const screens: ScreenItem[] = [
 ];
 
 export function ScreensGallery() {
+  const [selectedScreen, setSelectedScreen] = useState<ScreenItem | null>(null);
+
+  useEffect(() => {
+    if (!selectedScreen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedScreen(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedScreen]);
+
   return (
     <section className="section screens-section" id="telas" aria-labelledby="screens-title">
       <div className="container">
@@ -76,43 +100,96 @@ export function ScreensGallery() {
           <span className="eyebrow">Telas reais do sistema</span>
           <h2 id="screens-title">Veja o VendeLeve como ele realmente é</h2>
           <p>
-            Aqui você vê capturas da interface atual do sistema, com dados fictícios
-            de demonstração e sem promessas de recursos que ainda não existem.
+            Capturas fiéis da interface atual, exibidas em tamanho legível e com opção
+            de ampliar no computador ou no celular.
           </p>
         </div>
 
-        <div className="screens-grid real-screens-grid">
+        <div className="real-screens-list">
           {screens.map((screen, index) => (
-            <article className="screen-card real-screen-card" key={screen.title}>
-              <div className="screen-window real-screen-window">
-                <div className="screen-window-bar" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                  <b>VendeLeve</b>
-                </div>
-
-                <div className="real-screen-frame">
-                  <Image
-                    src={screen.src}
-                    alt={screen.alt}
-                    width={screen.width}
-                    height={screen.height}
-                    className="real-screen-shot"
-                    priority={index < 2}
-                    sizes="(max-width: 720px) 100vw, (max-width: 980px) 50vw, 46vw"
-                  />
-                </div>
-              </div>
-
+            <article
+              className={`real-screen-row${index % 2 === 1 ? " is-reversed" : ""}`}
+              key={screen.title}
+            >
               <div className="real-screen-copy">
+                <span className="real-screen-index">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{screen.title}</h3>
                 <p>{screen.description}</p>
+                <button
+                  className="real-screen-open"
+                  type="button"
+                  onClick={() => setSelectedScreen(screen)}
+                  aria-label={`Ampliar a tela ${screen.title}`}
+                >
+                  <Icon name="search" /> Ampliar tela
+                </button>
               </div>
+
+              <button
+                className="real-screen-preview"
+                type="button"
+                onClick={() => setSelectedScreen(screen)}
+                aria-label={`Abrir a tela ${screen.title} em tamanho ampliado`}
+              >
+                <span className="real-screen-preview-bar" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                  <b>VendeLeve</b>
+                </span>
+                <Image
+                  src={screen.src}
+                  alt={screen.alt}
+                  width={screen.width}
+                  height={screen.height}
+                  className="real-screen-shot"
+                  priority={index === 0}
+                  sizes="(max-width: 720px) calc(100vw - 44px), (max-width: 1100px) 70vw, 820px"
+                />
+              </button>
             </article>
           ))}
         </div>
       </div>
+
+      {selectedScreen && (
+        <div
+          className="screen-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Tela ampliada: ${selectedScreen.title}`}
+          onMouseDown={(event) => {
+            if (event.currentTarget === event.target) setSelectedScreen(null);
+          }}
+        >
+          <div className="screen-lightbox-panel">
+            <div className="screen-lightbox-header">
+              <div>
+                <strong>{selectedScreen.title}</strong>
+                <span>{selectedScreen.description}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedScreen(null)}
+                aria-label="Fechar imagem ampliada"
+              >
+                <Icon name="close" />
+              </button>
+            </div>
+
+            <div className="screen-lightbox-scroll">
+              <Image
+                src={selectedScreen.src}
+                alt={selectedScreen.alt}
+                width={selectedScreen.width}
+                height={selectedScreen.height}
+                className="screen-lightbox-image"
+                sizes="96vw"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
