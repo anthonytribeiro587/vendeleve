@@ -1,6 +1,14 @@
 import Image from "next/image";
 
-const screens = [
+type ScreenItem = {
+  title: string;
+  description: string;
+  src: string;
+  alt: string;
+  featured?: boolean;
+};
+
+const screens: ScreenItem[] = [
   {
     title: "Início",
     description: "Indicadores, próximas cobranças, últimas vendas e ações rápidas.",
@@ -45,25 +53,31 @@ const screens = [
     alt: "Tela real de relatórios do VendeLeve com dados demonstrativos",
     featured: true,
   },
-] as const;
+];
 
 export function ScreensGallery() {
   return (
-    <section className="section screens-section" id="telas" aria-labelledby="screens-title">
+    <section
+      className="section screens-section"
+      id="telas"
+      aria-labelledby="screens-title"
+    >
       <div className="container">
         <div className="section-heading centered">
           <span className="eyebrow">Capturas fiéis da interface atual</span>
           <h2 id="screens-title">Conheça o VendeLeve por dentro</h2>
           <p>
-            As imagens usam a estrutura real do sistema, com a nova identidade VendeLeve
-            e dados fictícios preparados somente para demonstração.
+            As imagens usam a estrutura real do sistema, com a nova identidade
+            VendeLeve e dados fictícios preparados somente para demonstração.
           </p>
         </div>
 
         <div className="screens-grid real-screens-grid">
           {screens.map((screen, index) => (
             <article
-              className={`screen-card real-screen-card${screen.featured ? " featured" : ""}`}
+              className={`screen-card real-screen-card${
+                screen.featured ? " featured" : ""
+              }`}
               key={screen.title}
             >
               <div className="screen-window real-screen-window">
